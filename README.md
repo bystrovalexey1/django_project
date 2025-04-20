@@ -5,10 +5,23 @@
 
 ## Зависимости проекта:
 * The program uses the version Python 3.12
-* flake8 = "^7.2.0"
-* black = "^25.1.0"
-* isort = "^6.0.1"
-* mypy = "^1.15.0"
+* asgiref==3.8.1
+* black==25.1.0
+* click==8.1.8
+* colorama==0.4.6
+* Django==5.2
+* flake8==7.2.0
+* mccabe==0.7.0
+* mypy-extensions==1.0.0
+* packaging==25.0
+* pathspec==0.12.1
+* platformdirs==4.3.7
+* psycopg2-binary==2.9.10
+* pycodestyle==2.13.0
+* pyflakes==3.3.2
+* python-dotenv==1.1.0
+* sqlparse==0.5.3
+* tzdata==2025.2
 
 
 ## Реализованы контроллеры, для отображения домашней страницы и страницы с контактами
