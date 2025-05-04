@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from catalog.models import Product
 
@@ -26,6 +26,6 @@ def catalog_index(requests):
 
 
 def catalog_product_detail(requests, product_id):
-    product = Product.objects.get(id=product_id)
+    product = get_object_or_404(Product, id=product_id)
     context = {"product": product}
     return render(requests, "catalog/product_detail.html", context=context)
