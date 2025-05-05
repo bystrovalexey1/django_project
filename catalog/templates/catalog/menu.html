@@ -14,16 +14,16 @@
     <hr class="border-2"/>
     <h6>
         <a class="fs-3 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover text-secondary"
-           href="/"/>Главная</h6>
+           href="{% url 'catalog:home' %}"/>Главная</h6>
     <h6>
         <a class="fs-3 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover text-secondary"
            href="#"/>Категории</h6>
     <h6>
         <a class="fs-3 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover text-secondary"
-           href="/products/"/>Товары</h6>
+           href="{% url 'catalog:products' %}"/>Товары</h6>
     <h6>
         <a class="fs-3 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover text-secondary"
-           href="/contacts/"/>Контакты</h6>
+           href="{% url 'catalog:contacts' %}"/>Контакты</h6>
     <div class="btn-group mb-1">
 
 </div>
