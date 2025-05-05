@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>BystrovStore</title>
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <style>
+        .bar {
+        background-color: black;
+        color: white;
+        padding: 20px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        }
+    </style>
+
+</head>
+<body>
+<h1>Информация о продукте</h1>
+<p>{{ product.name }}</p>
+<p>{{ product.description }}</p>
+<p><img src="{{ /media/products/python.png }}"</p>
+<p>{{ product.category }}</p>
+<p>{{ product.price }}</p>
+<p>{{ product.created_at }}</p>
+<p>{{ product.updated_at }}</p>
+</body>
+</html>
