@@ -1,5 +1,5 @@
 {% extends 'catalog/base.html' %}
-{% load static %}
+{% load my_tags %}
 
 {% block title %}Товары{% endblock %}
 
@@ -8,7 +8,7 @@
 
 {% for prod in product %}
 <div class="card text-bg-info text-center mb-1 mt-3 ">
-    <img src='{{ prod.image.url }}' alt="{{ prod.name }}" class="rounded mx-auto d-block mt-1" style="width:200px">
+    <img src='{{ prod.image | media_filter }}' alt="{{ prod.name }}" class="rounded mx-auto d-block mt-1" style="width:200px">
     <div class="card-body">
         <a class="fs-3 link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover" href="/product_detail/{{ prod.id }}/"/>{{ prod.name }}</a>
         <p class="card-text">Описание: {{ prod.description }}</p>
