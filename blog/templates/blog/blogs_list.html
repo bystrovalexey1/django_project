@@ -1,0 +1,24 @@
+{% extends 'blog/blogs_base.html' %}
+{% load my_tags %}
+
+{% block title %}Блог{% endblock %}
+
+{% block content %}
+{% for blog in object_list %}
+<div class="card mt-5">
+    <img src="{{ blog.image | blogs_media_filter }}" class="rounded mx-auto d-block mt-1"
+         style="width:400px" alt="{{ blog.title }}">
+    <div class="card-body">
+        <a class="fs-3 link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
+           href="{% url 'blog:detail' blog.pk  %}"/>{{ blog.title }}</a>
+        <p class="card-text">{{ blog.note|truncatechars:90 }}</p>
+        <a href="{% url 'blog:update' blog.pk  %}" class="btn btn-primary">Редактировать</a>
+        <a href="{% url 'blog:delete' blog.pk  %}" class="btn btn-danger">Удалить</a>
+    </div>
+    <div class="card-footer text-body-secondary">
+        Опубликовано: {{ blog.created_at|date:'d M Y' }}
+        Просмотров: {{ blog.views_count }}
+    </div>
+</div>
+{% endfor %}
+{% endblock %}

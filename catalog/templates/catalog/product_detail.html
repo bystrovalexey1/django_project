@@ -8,14 +8,18 @@
 
 
 <div class="card text-bg-info text-center mb-1 mt-3 ">
-    <img src='{{ product.image | media_filter }}' alt="{{ product.name }}" class="rounded mx-auto d-block mt-1" style="width:200px">
+    <img src='{{ object.image | blogs_media_filter }}' alt="{{ object.name }}" class="rounded mx-auto d-block mt-1" style="width:200px">
     <div class="card-body">
-        <h5 class="card-title">{{ product.name }}</h5>
-        <p class="card-text">Описание: {{ product.description }}</p>
-        <p class="card-text"><small class="text-body-secondary">Категория: {{ product.category }}</small></p>
-        <p class="card-text fs-3">Цена: {{ product.price }}</p>
+        <h5 class="card-title">{{ object.name }}</h5>
+        <p class="card-text">Описание: {{ object.description }}</p>
+        <p class="card-text"><small class="text-body-secondary">Категория: {{ object.category }}</small></p>
+        <p class="card-text fs-3">Цена: {{ object.price }}</p>
     </div>
-    <p class="card-footer"><small class="text-body-secondary">Карточка продукта создана: {{ product.created_at|date:'d M Y' }}.
-        Карточка продукта обновлена: {{ product.updated_at|date:'d M Y' }}</small></p>
+    <p class="card-footer"><small class="text-body-secondary">Карточка продукта создана: {{ object.created_at|date:'d M Y' }}.
+        Карточка продукта обновлена: {{ object.updated_at|date:'d M Y' }}</small></p>
+    <div class="d-grid gap-2 d-md-flex mb-2 justify-content-md-end">
+        <a href="{% url 'catalog:product_update' object.pk %}" class="btn btn-secondary" role="button" aria-disabled="true">Редактировать</a>
+        <a href="{% url 'catalog:product_delete' object.pk %}" class="btn btn-danger" role="button" aria-disabled="true">Удалить</a>
+    </div>
 </div>
 {% endblock %}
