@@ -1,0 +1,44 @@
+{% load static %}
+{% load my_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}Мой блог{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+</head>
+<body>
+<nav id="navbar-example2" class="navbar bg-body-tertiary px-3 mb-3 ">
+    <a class="navbar-brand" href="{% url 'blog:list' %}">BystrovBlog</a>
+    <ul class="nav nav-pills">
+        <li class="nav-item me-2">
+            <a class="btn btn-primary" href="{% url 'blog:create' %}">Добавить пост</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn btn-secondary" href="{% url 'catalog:home' %}">В магазин</a>
+        </li>
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+               aria-expanded="false">Меню</a>
+            <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#">Войти</a></li>
+                <li><a class="dropdown-item" href="#">Регистрация</a></li>
+                <li>
+                    <hr class="dropdown-divider">
+                </li>
+            </ul>
+        </li>
+    </ul>
+</nav>
+<div class="row">
+    <div class="col-1"></div>
+    <div class="col-10">
+        {% block content %}{% endblock %}
+    </div>
+    <div class="col-1"></div>
+</div>
+
+<script src="{% static 'scripts/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<menu>
+    <div class="row">
+        <div class="col-2">
+            <img src="/static/images/bootstrap-logo.svg"
+                 class="rounded float-start" style="width: 30px; margin: 0px;">
+        </div>
+        <div class="col-9">
+            <div class="float-start text-warning">
+                <h4>BystrovStore</h4>
+            </div>
+
+        </div>
+    </div>
+    <hr class="border-2"/>
+    <h6>
+        <a class="fs-3 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover text-secondary"
+           href="{% url 'catalog:home' %}"/>Главная
+    </h6>
+    <h6>
+        <a class="fs-3 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover text-secondary"
+           href="{% url 'catalog:product_list' %}"/>Товары
+    </h6>
+    <h6>
+        <a class="fs-3 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover text-secondary"
+           href="{% url 'catalog:contacts' %}"/>Контакты
+    </h6>
+    <h6>
+        <a class="fs-3 link-offset-2 link-offset-3-hover link-underline link-underline-opacity-0 link-underline-opacity-75-hover text-secondary"
+           href="{% url 'blog:list' %}"/>Блог
+    </h6>
+    <div class="btn-group mb-1">
+
+    </div>
+    <div class="dropdown mb-1">
+        <a class="btn btn-secondary dropdown-toggle w-100" role="button" data-bs-toggle="dropdown"
+           aria-expanded="false">
+            Пользователь
+        </a>
+        <ul class="dropdown-menu ">
+            <li><a class="dropdown-item" href="#">Профиль</a></li>
+            <li>
+                <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="#">Выход</a></li>
+        </ul>
+    </div>
+</menu>
