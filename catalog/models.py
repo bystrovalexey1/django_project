@@ -27,14 +27,18 @@ class Product(models.Model):
         related_name="product",
         verbose_name="категория",
     )
-    price = models.CharField(max_length=15, verbose_name="цена за покупку")
+    price = models.IntegerField(verbose_name="цена за покупку")
     created_at = models.DateTimeField(auto_now_add=True, verbose_name="дата создания")
     updated_at = models.DateTimeField(
         auto_now=True, verbose_name="дата последнего изменения"
     )
+    is_published = models.BooleanField(
+        default=True,
+        verbose_name="Опубликовано",
+    )
 
     def __str__(self):
-        return f"{self.id} {self.name} - {self.description}. Цена: {self.price}. Категория: {self.category}"
+        return f"{self.id} {self.name} - {self.description}. Цена: {self.price}$. Категория: {self.category}"
 
     class Meta:
         verbose_name = "продукт"
