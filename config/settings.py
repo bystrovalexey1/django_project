@@ -24,7 +24,8 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
 
     "catalog",
-    "blog"
+    "blog",
+    'users'
 ]
 
 MIDDLEWARE = [
@@ -107,3 +108,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+AUTH_USER_MODEL = 'users.CustomUser'
