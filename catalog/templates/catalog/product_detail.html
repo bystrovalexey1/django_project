@@ -19,7 +19,7 @@
     </div>
     <p class="card-footer"><small class="text-body-secondary">Карточка продукта создана: {{ object.created_at|date:'d M Y' }}.
         Карточка продукта обновлена: {{ object.updated_at|date:'d M Y' }}</small></p>
-    <div class="d-grid gap-2 d-md-flex mb-2 justify-content-md-end">
+    <div class="d-grid gap-2 d-md-flex mb-2 me-2 justify-content-md-end">
         <a href="{% url 'catalog:product_update' object.pk %}" class="btn btn-secondary" role="button" aria-disabled="true">Редактировать</a>
         <a href="{% url 'catalog:product_delete' object.pk %}" class="btn btn-danger" role="button" aria-disabled="true">Удалить</a>
     </div>
