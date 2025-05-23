@@ -78,8 +78,11 @@ class HomeListView(ListView):
 class ProductListView(LoginRequiredMixin, ListView):
     model = Product
 
-    def get_queryset(self):
-        return Product.objects.filter(is_published=True)
+    def get_class_queryset(self, request):
+        queryset = Product.objects.all()
+        if not request.user.has_perm('catalog.can_unpublish_product'):
+            queryset = Product.objects.filter(is_published=True)
+        return queryset
 
 
 class ProductDetailView(LoginRequiredMixin, DetailView):
