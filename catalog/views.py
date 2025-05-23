@@ -6,6 +6,9 @@ from django.views.generic import ListView, DetailView, TemplateView
 from django.views.generic.edit import CreateView, DeleteView, UpdateView
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.core.cache import cache
+from django.views.decorators.cache import cache_page
+from django.utils.decorators import method_decorator
 
 from catalog.forms import ProductForm, CategoryForm
 from catalog.models import Product, Category
@@ -79,9 +82,20 @@ class ProductListView(LoginRequiredMixin, ListView):
     model = Product
 
     def get_queryset(self):
-        return Product.objects.all()
+        user = self.request.user
+
+        if user.has_perm('catalog.can_unpublish_product'):
+            return Product.objects.all()
+
+        return Product.objects.filter(is_active=True)
+        # queryset = cache.get('products_queryset')
+        # if not queryset:
+        #     queryset = super().get_queryset()
+        #     cache.set('products_queryset', queryset, 60 * 15)
+        # return queryset
 
 
+@method_decorator(cache_page(60 * 15), name='dispatch')
 class ProductDetailView(LoginRequiredMixin, DetailView):
     model = Product
 
