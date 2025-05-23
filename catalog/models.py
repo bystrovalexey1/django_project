@@ -1,5 +1,7 @@
 from django.db import models
 
+from users.models import CustomUser
+
 
 class Category(models.Model):
     name = models.CharField(max_length=150, verbose_name="наименование")
@@ -33,14 +35,25 @@ class Product(models.Model):
         auto_now=True, verbose_name="дата последнего изменения"
     )
     is_published = models.BooleanField(
-        default=True,
+        default=False,
         verbose_name="Опубликовано",
+    )
+    owner = models.ForeignKey(
+        CustomUser,
+        verbose_name='Автор',
+        help_text='Укажите автора',
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
     )
 
     def __str__(self):
         return f"{self.id} {self.name} - {self.description}. Цена: {self.price}$. Категория: {self.category}"
 
     class Meta:
+        permissions = [
+            ('can_unpublish_product', 'can unpublish product')
+        ]
         verbose_name = "продукт"
         verbose_name_plural = "продукты"
         ordering = ["id"]
