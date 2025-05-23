@@ -20,8 +20,23 @@
     <p class="card-footer"><small class="text-body-secondary">Карточка продукта создана: {{ object.created_at|date:'d M Y' }}.
         Карточка продукта обновлена: {{ object.updated_at|date:'d M Y' }}</small></p>
     <div class="d-grid gap-2 d-md-flex mb-2 me-2 justify-content-md-end">
-        <a href="{% url 'catalog:product_update' object.pk %}" class="btn btn-secondary" role="button" aria-disabled="true">Редактировать</a>
+        {% if perms.catalog.can_unpublish_product %}
+        <form action="{% url 'catalog:product_publish' object.pk %}" method="post">
+            {% csrf_token %}
+            {% if object.is_published %}
+            <button class="btn btn-warning" type="submit">Опубликовано</button>
+            {% else %}
+            <button class="btn btn-light" type="submit">Не опубликовано</button>
+            {% endif %}
+        </form>
+        {% endif %}
+        {% if perms.catalog.change_product or user == object.owner %}
+        <a href="{% url 'catalog:product_update' object.pk %}" class="btn btn-secondary" role="button"
+           aria-disabled="true">Редактировать</a>
+        {% endif%}
+        {% if perms.catalog.delete_product or user == object.owner %}
         <a href="{% url 'catalog:product_delete' object.pk %}" class="btn btn-danger" role="button" aria-disabled="true">Удалить</a>
+        {% endif %}
     </div>
 </div>
 {% endblock %}
