@@ -5,11 +5,10 @@
 
 {% block content %}
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
-    <h1 class="display-4">Товары</h1>
+    <h1 class="display-4">Товары категории {% object.category %}</h1>
 </div>
 <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-    <a href="{% url 'catalog:product_create' %}" class="btn btn-primary me-md-2" role="button" aria-disabled="true">Добавить
-        продукт</a>
+    <a href="{% url 'catalog:product_create' %}" class="btn btn-primary me-md-2" role="button" aria-disabled="true">Добавить продукт</a>
 </div>
 
 
@@ -22,7 +21,7 @@
         <a class="fs-3 link-dark link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover"
            href="{% url 'catalog:product_detail' prod.pk  %}"/>{{ prod.name }}</a>
         <p class="card-text">Описание: {{ prod.description }}</p>
-        <a href="{% url 'catalog:product_category' prod.category.pk %}"><small class="text-body-secondary">Категория: {{ prod.category }}</small></a>
+        <p class="card-text"><small class="text-body-secondary">Категория: {{ prod.category }}</small></p>
         <p class="card-text fs-3">Цена: {{ prod.price }}$</p>
     </div>
     <p class="card-footer"><small class="text-body-secondary">Карточка продукта создана: {{ prod.created_at|date:'d M Y' }}.

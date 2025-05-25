@@ -14,7 +14,7 @@
     <div class="card-body">
         <h5 class="card-title">{{ object.name }}</h5>
         <p class="card-text">Описание: {{ object.description }}</p>
-        <p class="card-text"><small class="text-body-secondary">Категория: {{ object.category }}</small></p>
+        <a href="{% url 'catalog:product_category' object.category.pk %}"><small class="text-body-secondary">Категория: {{ object.category }}</small></a>
         <p class="card-text fs-3">Цена: {{ object.price }}$</p>
     </div>
     <p class="card-footer"><small class="text-body-secondary">Карточка продукта создана: {{ object.created_at|date:'d M Y' }}.
